@@ -1,0 +1,50 @@
+
+body{
+    background-color: lightgrey;
+}
+#parent{
+    margin-top: 180px;
+    width: 20%;
+    margin-left: 38%;
+    background-color: white;
+    padding: 10px;
+}
+div>h3{
+    background-color: blue;
+    margin-top: 0px;
+    padding: 10px;
+    text-align: center;
+}
+div>h2{
+    
+    text-align: center;
+}
+input{
+    width: 90%;
+    margin: 5px;
+}
+.ab{
+    text-align: left;
+}
+#submit{
+    width: 93%;
+    text-align: center;
+    margin-left: 5px;
+    color: white;
+    background-color: blue;
+    border: none;
+    padding: 3px;
+    text-decoration: none;
+}
+
+a{
+    text-decoration: none;
+    color: white;
+}
+
+div>p>a{
+    text-decoration: none;
+    color: black;
+    margin-left:40%;
+    margin-top: -5px;
+}

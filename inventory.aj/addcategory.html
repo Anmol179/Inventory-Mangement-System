@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inventory-Management</title>
+    <link rel="stylesheet" href="add.css">
+</head>
+<body>
+    <div id ="parent">
+        <div>
+            <div>
+                <h2>+ Add Category</h2>
+            </div>
+            <div>
+                <a href="category.html"><h2>X</h2></a>
+            </div>
+        </div>
+        <hr>
+        <div>
+            <form>
+                <input type="text" placeholder="Enter Category Name" required id="catname">
+                <hr>
+                <input type="submit" id="submit">
+            </form>
+        </div>
+    </div>
+</body>
+</html>
+
+<script>
+    document.querySelector("form").addEventListener("submit",addcategry);
+
+var addcat = JSON.parse(localStorage.getItem("category")) || [];
+function addcategry(){
+    event.preventDefault();
+    var cname = document.getElementById("catname").value;
+
+    var data = {
+        category_name:cname,
+    }
+
+    addcat.push(data);
+    localStorage.setItem("category",JSON.stringify(addcat))
+
+    window.location.href = "category.html"
+}
+</script>

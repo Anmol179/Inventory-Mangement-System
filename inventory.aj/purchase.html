@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inventory-Management</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div>
+        <h3>Inventory-Management Project By <i>Anmol Jain</i></h3>
+    </div>
+    <div id = "parent1">
+        <div id="child1">
+            <div>
+                <a href="coustomer.html">
+                    <p>Coustomer</p>
+                </a>
+            </div>
+            <div>
+                <a href="category.html">
+                    <p>
+                        Category
+                    </p>
+                </a>
+            </div>
+            <div>
+                <a href="brand.html">
+                    <p>Brand</p>
+                </a>
+            </div>
+            <div>
+                <a href="supplier.html">
+                    <p>Supplier</p>
+                </a>
+            </div>
+            <div>
+                <a href="product.html">
+                    <p>Product</p>
+                </a>
+            </div>
+            <div>
+                <a href="purchase.html">
+                    <p>Purschase</p>
+                </a>
+            </div>
+            <div>
+                <a href="order.html">
+                    <p>Order</p>
+                </a>
+            </div>
+        </div>
+        <div>
+            <button>Log Out</button>
+        </div>
+    </div>
+    <div id = "parent2">
+        <div>
+            <div id="child2">
+                <h1>
+                    Purhase List
+                </h1>
+            </div>
+            <div>
+                <a href="addpurchae.html">
+                    <h4>New Purchase [+]</h4>
+                </a>
+                
+            </div>
+        </div>
+        <hr>
+        <div>
+            <div id="child3">
+                <p>Search</p>
+                <input type="search" placeholder="Search here">
+            </div>
+        </div>
+        <div id="child4">
+            <table>
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Product</th>
+                        <th>Quantity</th>
+                        <th>Supplier</th>
+                        <th>Status</th>
+                        <th>Delete</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>
+<script>
+    var datavalue = JSON.parse(localStorage.getItem("purchase")) || [];
+
+    displaydata(datavalue);
+
+    function displaydata(datavalue){
+        var body = document.querySelector("tbody");
+
+        body.textContent = "";
+        var a = 1;
+        datavalue.map(function(ele,ind){
+
+            var tr = document.createElement("tr");
+
+            var td1 = document.createElement("td");
+            td1.textContent = a;
+            a++;
+            var td2 = document.createElement("td");
+            td2.textContent = ele.product;
+            var td3 = document.createElement("td");
+            td3.textContent = ele.quantity;
+            var td4 = document.createElement("td");
+            td4.textContent = ele.supplier;
+            var td5 = document.createElement("td");
+            td5.textContent = "Active"
+            var td6 = document.createElement("td")
+            td6.textContent = "Delete"
+            td6.addEventListener("click",function(){
+            deletedata(ele,ind);
+            })
+
+            tr.append(td1,td2,td3,td4,td5,td6);
+            body.append(tr);
+
+        })
+
+        function deletedata(ele,index){
+            datavalue.splice(index,1);
+            localStorage.setItem("purchase",JSON.stringify(datavalue));
+            displaydata(datavalue);
+        }
+    }
+
+    document.querySelector("button").addEventListener("click",logout);
+
+    function logout(){
+        alert("Want to logout?");
+        window.location.href = "index.html"
+    }
+</script>

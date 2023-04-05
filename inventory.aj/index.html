@@ -1,0 +1,67 @@
+<!--login page-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inventory-Management</title>
+    <link rel="stylesheet" href="login.css">
+</head>
+<body>
+    <div>
+        <h3>Inventory-Management Project By <i>Anmol Jain</i></h3>
+    </div>
+    <div id="parent">
+        <div>
+            <h2>
+                Login
+            </h2>
+        </div>
+        <div>
+            <form>
+                <label class="ab">E-Mail</label>
+                <br>
+                <input type="email" required id="mail">
+                <br>
+                <label class="ab">Password</label>
+                <br>
+                <input type="password" required id="pass">
+                <br>
+                <input type="submit" id="submit">
+            </form>
+        </div>
+    </div>
+    <div>
+        <p><a href="register.html">Don't have an account? click here</a></p>
+    </div>  
+</body>
+</html>
+<script>
+    document.querySelector("form").addEventListener("submit",login);
+
+    function login(){
+        event.preventDefault();
+        var mail = document.getElementById("mail").value;
+        var pass = document.getElementById("pass").value;
+
+        var user =JSON.parse(localStorage.getItem("registered")) || [];
+
+        var ct = 0;
+
+        user.filter(function(ele){
+            if (mail===ele.email && pass===ele.password){
+                ct++;
+                return;
+            }
+        })
+
+        if(ct==0){
+            alert("Wrong details");
+        }
+        else if(ct>0){
+            alert("Login sucessful");
+            location.href = "coustomer.html"
+        }
+    }
+</script>

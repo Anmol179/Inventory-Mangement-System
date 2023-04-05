@@ -1,0 +1,85 @@
+*{
+    font-family: "Gill Sans", sans-serif;
+}
+div>h3{
+    text-align: center;
+    background-color: blue;
+    padding: 10px;
+    color: white;
+}
+body{
+    background-color: lightgrey;
+}
+#parent1{
+    display: flex;
+    width: 60%;
+    margin: auto;
+    justify-content: space-between;
+    background-color: black;
+    padding: 10px;
+    margin-bottom: 15px;
+}
+
+#child1{
+    display: flex;
+    background-color: black;
+}
+#child1>div>a>p{
+    margin: 5px;
+    color: white;
+    background-color: black;
+}
+a{
+    text-decoration: none;
+}
+button{
+    border-radius: 5px;
+    margin-top: 3px;
+    padding: 5px;
+}
+#parent2{
+    width: 60%;
+    margin: auto;
+    background-color: white;
+    padding: 10px;
+}
+
+#parent2>div{
+    display: flex;
+    justify-content: space-between;
+}
+
+#child3{
+    display: flex;
+    margin-left: 72%;
+    margin-top: -10px;
+}
+#child3>input{
+    height: 20px;
+    margin-top: 14px;
+    margin-left: 3px;
+}
+#child2{
+    margin-top: -15px;
+    margin-bottom: -15px;
+}
+
+table{
+    width: 100%;
+}
+table,td,tr,th,tbody{
+    border: 1px solid rgba(0, 0, 0, 0.74);
+    border-collapse: collapse;
+    text-align: center;
+}
+#child2{
+    display: flex;
+    justify-content: space-between;
+}
+
+div>a>h4{
+    background-color: blue;
+    color: white;
+    padding: 4px;
+    margin-top: 10px;
+}

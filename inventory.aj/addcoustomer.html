@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inventory-Management</title>
+    <link rel="stylesheet" href="add.css">
+</head>
+<body>
+    <div id ="parent">
+        <div>
+            <div>
+                <h2>+ Add Customer</h2>
+            </div>
+            <div>
+                <a href="coustomer.html"><h2>X</h2></a>
+            </div>
+        </div>
+        <hr>
+        <div>
+            <form>
+                <input type="text" placeholder="Enter Customer Name" required id="cuname">
+                <input type="number" placeholder="Enter Customer's No" required id="num">
+                <input type="number" placeholder="Balance" required id="bal">
+                <input type="text" placeholder="Address" required id="addr">
+                <hr>
+                <input type="submit" id="submit">
+            </form>
+        </div>
+    </div>
+</body>
+</html>
+<script>
+    document.querySelector("form").addEventListener("submit",addcoustomer);
+
+var addcus = JSON.parse(localStorage.getItem("coustomer")) || [];
+function addcoustomer(){
+    event.preventDefault();
+    var cuname = document.getElementById("cuname").value;
+    var num = document.getElementById("num").value;
+    var bala =document.getElementById("bal").value;
+    var addres = document.getElementById("addr").value;
+
+    var data = {
+        name : cuname,
+        no : num,
+        balance : bala,
+        address : addres
+    }
+
+    addcus.push(data);
+    localStorage.setItem("coustomer",JSON.stringify(addcus))
+
+    window.location.href = "coustomer.html"
+}
+</script>

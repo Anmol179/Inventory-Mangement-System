@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inventory-Management</title>
+    <link rel="stylesheet" href="add.css">
+</head>
+<body>
+    <div id ="parent">
+        <div>
+            <div>
+                <h2>+ Add Supplier</h2>
+            </div>
+            <div>
+                <a href="supplier.html"><h2>X</h2></a>
+            </div>
+        </div>
+        <hr>
+        <div>
+            <form>
+                <input type="text" placeholder="Supplier Name" required id="sup">
+                <input type="number" placeholder="Mobile No" required id="no">
+                <input type="text" placeholder="Address" required id="addre">
+                <input type="submit" id="submit">
+            </form>
+        </div>
+    </div>
+</body>
+</html>
+
+<script>
+    document.querySelector("form").addEventListener("submit",addsupplier);
+
+var addsup = JSON.parse(localStorage.getItem("supplier")) || [];
+function addsupplier(){
+    event.preventDefault();
+    var sup = document.getElementById("sup").value;
+    var num = document.getElementById("no").value;
+    var address = document.getElementById("addre").value;
+
+    var data = {
+        Supplier : sup,
+        No : num,
+        address : address
+    }
+
+    addsup.push(data);
+    localStorage.setItem("supplier",JSON.stringify(addsup))
+
+    window.location.href = "supplier.html"
+}
+</script>

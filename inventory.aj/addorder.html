@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inventory-Management</title>
+    <link rel="stylesheet" href="add.css">
+</head>
+<body>
+    <div id ="parent">
+        <div>
+            <div>
+                <h2>+ Add Order</h2>
+            </div>
+            <div>
+                <a href="order.html"><h2>X</h2></a>
+            </div>
+        </div>
+        <hr>
+        <div>
+            <form>
+                <input type="text" placeholder="Product Name" required id="pname">
+                <input type="number" placeholder="Quantity" required id="qun">
+                <input type="text" placeholder="Customer name" required id="cus">
+                <input type="submit" id="submit">
+            </form>
+        </div>
+    </div>
+</body>
+</html>
+
+<script>
+    document.querySelector("form").addEventListener("submit",addorder);
+
+var addod = JSON.parse(localStorage.getItem("order")) || [];
+function addorder(){
+    event.preventDefault();
+    var product = document.getElementById("pname").value;
+    var Quantity = document.getElementById("qun").value;
+    var Customer =document.getElementById("cus").value;
+
+    var data = {
+       product : product,
+       quantity : Quantity,
+       Coustomer : Customer
+    }
+
+    addod.push(data);
+    localStorage.setItem("order",JSON.stringify(addod))
+
+    window.location.href = "order.html"
+}
+</script>

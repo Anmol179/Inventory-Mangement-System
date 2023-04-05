@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inventory-Management</title>
+    <link rel="stylesheet" href="add.css">
+</head>
+<body>
+    <div id ="parent">
+        <div>
+            <div>
+                <h2>+ Add Product</h2>
+            </div>
+            <div>
+                <a href="product.html"><h2>X</h2></a>
+            </div>
+        </div>
+        <hr>
+        <div>
+            <form>
+                <input type="text" placeholder="Category Name" required id="canam">
+                <input type="text" placeholder="Brand Name" required id="banam">
+                <input type="text" placeholder="Product name" required id="panam">
+                <input type="text" placeholder="Product Model" required id="pm">
+                <input type="text" placeholder="Product Decription" required id="pd">
+                <input type="number"placeholder="Quantity" required id="qua">
+                <input type="text" placeholder="Supplier" required id="sup">
+                <hr>
+                <input type="submit" id="submit">
+            </form>
+        </div>
+    </div>
+</body>
+</html>
+
+<script>
+    document.querySelector("form").addEventListener("submit",addprooduct);
+
+var addpr = JSON.parse(localStorage.getItem("product")) || [];
+function addprooduct(){
+    event.preventDefault();
+    var cat = document.getElementById("canam").value;
+    var bran = document.getElementById("banam").value;
+    var prod =document.getElementById("panam").value;
+    var mod = document.getElementById("pm").value;
+    var desc = document.getElementById("pd").value;
+    var quan = document.getElementById("qua").value;
+    var sup = document.getElementById("sup").value;
+
+    var data = {
+        Category : cat,
+        Brand : bran,
+        product : prod,
+        model : mod,
+        Description : desc,
+        quantity : quan,
+        supplier : sup
+    }
+
+    addpr.push(data);
+    localStorage.setItem("product",JSON.stringify(addpr))
+
+    window.location.href = "product.html"
+}
+</script>

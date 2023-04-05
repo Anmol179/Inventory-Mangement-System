@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inventory-Management</title>
+    <link rel="stylesheet" href="add.css">
+</head>
+<body>
+    <div id ="parent">
+        <div>
+            <div>
+                <h2>+ Add Brand</h2>
+            </div>
+            <div>
+                <a href="brand.html"><h2>X</h2></a>
+            </div>
+        </div>
+        <hr>
+        <div>
+            <form>
+                <input type="text" placeholder="Enter Brand Name" required id="bname">
+                <input type="text" placeholder="Mention Category" required id="cate">
+                <hr>
+                <input type="submit" id="submit">
+            </form>
+        </div>
+    </div>
+</body>
+</html>
+<script>
+    document.querySelector("form").addEventListener("submit",addbrand);
+
+    var addbr = JSON.parse(localStorage.getItem("brand")) || [];
+    function addbrand(){
+        event.preventDefault();
+        var bname = document.getElementById("bname").value;
+        var cat = document.getElementById("cate").value;
+
+        var data = {
+            category:cat,
+            brand:bname
+        }
+
+        addbr.push(data);
+        localStorage.setItem("brand",JSON.stringify(addbr))
+
+        window.location.href = "brand.html"
+    }
+</script>
